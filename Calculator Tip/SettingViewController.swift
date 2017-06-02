@@ -16,8 +16,11 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tip = 5
-        
+        if let tipAmount = UserDefaults.standard.object(forKey: "tip") as? Int {
+            txtTipAmount.text = String(tipAmount) + "%"
+        }else {
+            txtTipAmount.text = "5%"
+        }
     }
 
     override func didReceiveMemoryWarning() {
