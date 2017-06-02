@@ -25,7 +25,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
-        self.txtSoTien.delegate = self
+        //self.txtSoTien.delegate = self
+        self.txtSoTien.keyboardType = UIKeyboardType.numberPad
         // Do any additional setup after loading the view, typically from a nib.
         if let tip = UserDefaults.standard.object(forKey: "tip") as? Int {
             txtTipAmount.text = String(tip)
@@ -88,6 +89,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @IBAction func btnResetAction(_ sender: Any) {
+        txtSoTien.text?.removeAll()
+        txtTienTip.text?.removeAll()
+        txtThanhTien.text?.removeAll()
+    }
+    
     //Get date time
     func getDateTime() -> String {
         let date = Date()
@@ -100,12 +107,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     //input only numberic
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    /*func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
         let allowedCharacters = CharacterSet.decimalDigits
         let characterSet = CharacterSet(charactersIn: string)
         return allowedCharacters.isSuperset(of: characterSet)
-    }
+    }*/
     
     // dimiss keyboard when tapping
     func dismissKeyboard() {
