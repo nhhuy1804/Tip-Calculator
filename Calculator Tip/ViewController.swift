@@ -21,8 +21,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        
         self.txtSoTien.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
         if let tip = UserDefaults.standard.object(forKey: "tip") as? Int {
